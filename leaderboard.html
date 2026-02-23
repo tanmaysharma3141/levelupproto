@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaderboard | VibeCoding</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+</style>
+</head>
+
+<body class="bg-[#191022] text-white">
+
+<!-- Navbar -->
+<header class="border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <h1 class="text-xl font-bold text-purple-500">VibeCoding</h1>
+    <nav class="flex gap-6 text-sm text-gray-300">
+      <a href="index.html" class="hover:text-white">Home</a>
+      <a href="dashboard.html" class="hover:text-white">Dashboard</a>
+      <a href="classroom.html" class="hover:text-white">Classroom</a>
+    </nav>
+  </div>
+</header>
+
+<div class="max-w-4xl mx-auto px-6 py-10">
+
+  <h2 class="text-3xl font-extrabold mb-6">Leaderboard</h2>
+
+  <!-- Top 3 Cards -->
+  <div id="topThree" class="grid md:grid-cols-3 gap-6 mb-10"></div>
+
+  <!-- Full Table -->
+  <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+    <table class="w-full text-left">
+      <thead class="border-b border-white/10 text-gray-400 text-sm">
+        <tr>
+          <th class="p-4">Rank</th>
+          <th class="p-4">Student</th>
+          <th class="p-4">Level</th>
+          <th class="p-4">XP</th>
+          <th class="p-4">Streak</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboardBody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+
+// Hardcoded data
+const students = [
+  { id: 1, name: "Tanmay Sharma", xp: 1240, level: 5, streak: 7 },
+  { id: 2, name: "Aarav Mehta", xp: 980, level: 4, streak: 5 },
+  { id: 3, name: "Riya Patel", xp: 1560, level: 6, streak: 10 },
+  { id: 4, name: "Kabir Singh", xp: 720, level: 3, streak: 3 },
+  { id: 5, name: "Neha Verma", xp: 1840, level: 7, streak: 12 }
+];
+
+// Sort by XP descending
+students.sort((a, b) => b.xp - a.xp);
+
+// Highlight current user
+const currentUser = "Tanmay Sharma";
+
+// Render Top 3
+const topContainer = document.getElementById("topThree");
+
+students.slice(0,3).forEach((s, index) => {
+  const medals = ["🥇", "🥈", "🥉"];
+  topContainer.innerHTML += `
+    <div class="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+      <div class="text-3xl mb-2">${medals[index]}</div>
+      <div class="font-bold text-lg">${s.name}</div>
+      <div class="text-gray-400 text-sm mt-1">Level ${s.level}</div>
+      <div class="text-purple-400 font-semibold mt-2">${s.xp} XP</div>
+    </div>
+  `;
+});
+
+// Render table
+const tbody = document.getElementById("leaderboardBody");
+
+students.forEach((s, index) => {
+  const highlight = s.name === currentUser
+    ? "bg-purple-500/10"
+    : "";
+
+  tbody.innerHTML += `
+    <tr class="border-b border-white/5 ${highlight}">
+      <td class="p-4 font-semibold">#${index + 1}</td>
+      <td class="p-4">${s.name}</td>
+      <td class="p-4">Lvl ${s.level}</td>
+      <td class="p-4 text-purple-400 font-semibold">${s.xp}</td>
+      <td class="p-4">${s.streak} days</td>
+    </tr>
+  `;
+});
+
+</script>
+
+</body>
+</html>
