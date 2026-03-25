@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 30 33% 98%;
+    --foreground: 0 2% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 2% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 2% 11%;
+
+    --primary: 45 100% 23%;
+    --primary-foreground: 30 33% 98%;
+
+    --secondary: 30 20% 93%;
+    --secondary-foreground: 0 2% 11%;
+
+    --muted: 30 15% 92%;
+    --muted-foreground: 0 2% 36%;
+
+    --accent: 45 100% 23%;
+    --accent-foreground: 30 33% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 2% 11%;
+    --input: 30 15% 88%;
+    --ring: 45 100% 23%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --surface: 0 0% 100%;
+    --surface-alt: 30 20% 95%;
+    --gold: 45 100% 23%;
+    --gold-hover: 45 100% 18%;
+    --charcoal: 0 2% 11%;
+    --warm-cream: 30 33% 98%;
+    --text-secondary: 0 2% 36%;
+    --hairline: 0 2% 11%;
+
+    --shadow-subtle: 0 1px 3px 0 hsl(0 2% 11% / 0.06), 0 1px 2px -1px hsl(0 2% 11% / 0.06);
+    --shadow-card: 0 4px 24px -4px hsl(0 2% 11% / 0.08);
+    --shadow-elevated: 0 8px 32px -8px hsl(0 2% 11% / 0.12);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --sidebar-background: 30 20% 95%;
+    --sidebar-foreground: 0 2% 11%;
+    --sidebar-primary: 45 100% 23%;
+    --sidebar-primary-foreground: 30 33% 98%;
+    --sidebar-accent: 30 15% 88%;
+    --sidebar-accent-foreground: 0 2% 11%;
+    --sidebar-border: 30 15% 85%;
+    --sidebar-ring: 45 100% 23%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .hairline {
+    border-color: hsl(var(--hairline) / 0.12);
+  }
+}
